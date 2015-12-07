@@ -1,0 +1,9 @@
+{
+  "name": "hacker_news_colors",
+  "title": "Hacker News Colors",
+  "id": "jid1-lwhDTbxS62Tzog",
+  "description": "Makes Hacker News easier to read by adding a bit of color to every story, based on points.",
+  "author": "onli",
+  "license": "MPL 2.0",
+  "version": "0.2.2"
+}
