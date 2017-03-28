@@ -38,3 +38,45 @@ for (var i = 0; i < point_spans.length; i++) {
         continue;
     }
 }
+
+self.port.on("get-prefs", function(prefs) {
+	if (prefs[0]) {
+		colorizeCommentsCounter();
+	}
+	self.port.on("prefchange", function(data) {
+		if (data[0] == 'colorComments' && data[1]) {
+			colorizeCommentsCounter();
+		} else if (data[0] == 'colorComments' && data[1] == false) {
+			var point_spans = document.querySelectorAll(".subtext > a:last-child");
+			for (var i = 0; i < point_spans.length; i++) {
+				point_spans[i].style.background = 'transparent';
+			}
+		}
+	});
+});
+
+function colorizeCommentsCounter() {
+	var point_spans = document.querySelectorAll(".subtext > a[href*='item?id=']");
+	// [\s\u00A0] would be better than .*, but firefox does not match the regex then.
+	var points_regex = /(\d+).*comments/;
+	for (var i = 0; i < point_spans.length; i++) {
+		var span = point_spans[i];
+		var points = 0;
+		var id = null
+
+		try {
+			points = parseInt(points_regex.exec(span.innerHTML)[1],10);
+	  
+			var intensity = 0;
+			if (points >= 1 && points < max_points) {
+				intensity = Math.floor(points/(max_points / (intensity_steps))) % intensity_steps;
+			} else if (points >= max_points) {
+				intensity = intensity_steps;
+			}
+
+			span.style.background = "linear-gradient(to bottom, rgba(255,255,255,0) 82%,  rgba(" + colors[intensity] + ",1) 90%, rgba(" + colors[intensity] + ",1) 100%)";
+		} catch (e) {
+			continue;
+		}
+	}
+}

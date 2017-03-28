@@ -5,9 +5,18 @@
   "description": "Makes Hacker News easier to read by adding a bit of color to every story, based on points.",
   "author": "onli",
   "license": "MPL 2.0",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "main": "lib/main.js",
   "permissions": {
     "multiprocess": true
+  },
+  "preferences": [
+  {
+    "description": "Also colorize comment score?",
+    "type": "bool",
+    "name": "colorComments",
+    "value": false,
+    "title": "Comments"
   }
+  ]
 }
