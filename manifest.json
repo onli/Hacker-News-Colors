@@ -1,0 +1,33 @@
+{
+    "applications": {
+        "gecko": {
+            "id": "jid1-lwhDTbxS62Tzog@jetpack",
+            "strict_min_version": "42.0"
+        }
+    },
+
+    "content_security_policy": "script-src 'self' https://news.ycombinator.com; object-src 'self'",
+
+    "content_scripts": [
+      {
+        "matches": ["*://news.ycombinator.com/*"],
+        "js": ["data/hn-colors.js"],
+        "run_at": "document_end"
+      }
+    ],
+
+
+    "description": "Makes Hacker News easier to read by adding a bit of color to every story, based on points.",
+
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon.png",
+        "128": "icon128.png"
+    },
+
+    "manifest_version": 2,
+
+    "name": "hacker_news_colors",
+
+    "version": "0.4.0"
+}
