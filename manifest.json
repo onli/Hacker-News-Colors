@@ -5,9 +5,7 @@
             "strict_min_version": "42.0"
         }
     },
-
-    "content_security_policy": "script-src 'self' https://news.ycombinator.com; object-src 'self'",
-
+    
     "content_scripts": [
       {
         "matches": ["*://news.ycombinator.com/*"],
