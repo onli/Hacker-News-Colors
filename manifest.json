@@ -1,11 +1,14 @@
 {
-    "applications": {
+
+    "browser_specific_settings": {
         "gecko": {
             "id": "jid1-lwhDTbxS62Tzog@jetpack",
-            "strict_min_version": "42.0"
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
         }
     },
-    
+     
     "content_scripts": [
       {
         "matches": ["*://news.ycombinator.com/*"],
@@ -15,7 +18,7 @@
     ],
 
 
-    "description": "Makes Hacker News easier to read by adding a bit of color to every story, based on points.",
+    "description": "Makes Hacker News easier to read by adding a bit of color to the upvote counter, based on points.",
 
     "icons": {
         "16": "icon16.png",
@@ -27,5 +30,5 @@
 
     "name": "Hacker News Colors",
 
-    "version": "0.4.0"
+    "version": "0.5.0"
 }
